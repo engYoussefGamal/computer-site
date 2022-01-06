@@ -5,9 +5,12 @@
 
 using namespace std;
 
+//file area name
 #define name_file  "data_siup_loin/"
 #define name_file_cart  "data_cart/"
+//--------------------------------------------
 
+//The number of names from each category
 const int cpusize = 10;
 const int Gpusize = 12;
 const int ramsize = 11;
@@ -15,9 +18,11 @@ const int psusize = 10;
 const int casesize = 9;
 const int mobosize = 10;
 const int storunsize = 11;
+//--------------------------------------------
 
 string usr;
 
+//functions
 void cart();
 void total_money();
 void menu();
@@ -30,20 +35,22 @@ void psu();
 void cases();
 void mobo();
 void storun();
+//--------------------------------------------
 
 int main()
 {
-    
-    //login_and_singup------------------------------------
-    int n;
+
+    //login_and_singup code
+    char n;
     cout << "\n                             ----------------------------welcome--------------------------------                   \n";
     //  cout << "                                                      Choose one option: ";
     cout << "\n                                                     press 1 to SignUp";
     cout << "\n                                                     press 2 to LogIn\n";
+   // cout << "\n                                                     Press any key to exit.\n";
     cin >> n;
-    if (n == 1)
+    if (n == '1')
         sign_up();
-    else if (n == 2)
+    else if (n == '2')
         log_in();
     else
     {
@@ -51,12 +58,13 @@ int main()
         cout << "                                                       Try again...\n";
         main();
     }
+    //delete
     system("cls");
-    //-----------------------------------------------------
-   
-    //menu-------------------------------------------------
-    menu();
+    //--------------------------------------------
 
+    //menu function
+    menu();
+    //--------------------------------------------
 
     return 0;
 }
@@ -132,12 +140,12 @@ void total_money()
         int sum = 0;
         int total;
         for (int j = 0; j < count; j++) {
-            cout << "                             " << monet[j] << "EGP" << endl;
+            cout << "                             "<< monet[j] << "EGP" << endl;
             total = monet[j];
             sum += total;
         }
-        cout <<"                             Total items = " << count;
-        cout <<"                             Total money = " << sum <<"EGP";
+        cout << "                             Total items = " << count;
+        cout << "                             Total money = " << sum << "EGP";
     }
 }
 
@@ -214,7 +222,7 @@ void cpu()
         pfileprice >> cpu_pr[n1];
     }
     //---------------------------------------------------
-    
+
     //out put to user------------------------------------
 
     cout << "\n                             ---------------------------Processor----------------------------------                \n\n";
@@ -225,19 +233,19 @@ void cpu()
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
-     
+
     //save chooses price in file--------------------------
     ofstream cartfileprice;
     string dircartpr = name_file_cart + usr + "pr" + ".txt";
     cartfileprice.open(dircartpr, ios::out | ios::app);
     //----------------------------------------------------
-    
+
     //save chooses in file--------------------------------
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -254,7 +262,7 @@ void cpu()
     default: menu();
     }
     //----------------------------------------------------
-    
+
     //close files-----------------------------------------
     cartfile.close();
     dfiledata.close();
@@ -301,7 +309,7 @@ void Gpu()
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -367,7 +375,7 @@ void ram()
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -409,7 +417,7 @@ void psu()
         pfileprice >> cpu_pr[n1];
     }
     //---------------------------------------------------
-    
+
     //out put to user------------------------------------
 
     cout << "\n                             ---------------------------Power supplies----------------------------------                \n\n";
@@ -420,19 +428,19 @@ void psu()
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
-     
+
     //save chooses price in file--------------------------
     ofstream cartfileprice;
     string dircartpr = name_file_cart + usr + "pr" + ".txt";
     cartfileprice.open(dircartpr, ios::out | ios::app);
     //----------------------------------------------------
-    
+
     //save chooses in file--------------------------------
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -449,7 +457,7 @@ void psu()
     default: menu();
     }
     //----------------------------------------------------
-    
+
     //close files-----------------------------------------
     cartfile.close();
     dfiledata.close();
@@ -496,7 +504,7 @@ void cases()
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -560,7 +568,7 @@ void mobo()
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
@@ -624,7 +632,7 @@ void storun()
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
     char ch;
-    cout << "                              choos number: ";
+    cout << "                              choose number: ";
     cin >> ch;
     switch (ch)
     {
