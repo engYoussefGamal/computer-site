@@ -278,12 +278,12 @@ void Gpu()
     ifstream pfileprice;
     dfiledata.open("gpudata.txt");
     pfileprice.open("gpuprice.txt");
-    string cpu_name[Gpusize];
-    int cpu_pr[Gpusize];
+    string gpu_name[Gpusize];
+    int gpu_pr[Gpusize];
 
     for (int n1 = 0; n1 < Gpusize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, gpu_name[n1]);
+        pfileprice >> gpu_pr[n1];
     }
     //---------------------------------------------------
 
@@ -293,7 +293,7 @@ void Gpu()
 
     for (int n = 0; n < Gpusize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << gpu_name[n] << "   {" << gpu_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -313,18 +313,18 @@ void Gpu()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << cpu_name[10]; cartfile << endl; cartfileprice << cpu_pr[10]; cartfileprice << endl; cpu();
-    case '12':cartfile << cpu_name[11]; cartfile << endl; cartfileprice << cpu_pr[11]; cartfileprice << endl; cpu();
+    case '1': cartfile << gpu_name[0]; cartfile << endl; cartfileprice << gpu_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << gpu_name[1]; cartfile << endl; cartfileprice << gpu_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << gpu_name[2]; cartfile << endl; cartfileprice << gpu_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << gpu_name[3]; cartfile << endl; cartfileprice << gpu_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << gpu_name[4]; cartfile << endl; cartfileprice << gpu_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << gpu_name[5]; cartfile << endl; cartfileprice << gpu_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << gpu_name[6]; cartfile << endl; cartfileprice << gpu_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << gpu_name[7]; cartfile << endl; cartfileprice << gpu_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << gpu_name[8]; cartfile << endl; cartfileprice << gpu_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << gpu_name[9]; cartfile << endl; cartfileprice << gpu_pr[9]; cartfileprice << endl; cpu();
+    case '11':cartfile << gpu_name[10]; cartfile << endl; cartfileprice << gpu_pr[10]; cartfileprice << endl; cpu();
+    case '12':cartfile << gpu_name[11]; cartfile << endl; cartfileprice << gpu_pr[11]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
@@ -344,12 +344,12 @@ void ram()
     ifstream pfileprice;
     dfiledata.open("ramdata.txt");
     pfileprice.open("ramprice.txt");
-    string cpu_name[ramsize];
-    int cpu_pr[ramsize];
+    string ram_name[ramsize];
+    int ram_pr[ramsize];
 
     for (int n1 = 0; n1 < ramsize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, ram_name[n1]);
+        pfileprice >> ram_pr[n1];
     }
     //---------------------------------------------------
 
@@ -359,7 +359,7 @@ void ram()
 
     for (int n = 0; n < ramsize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << ram_name[n] << "   {" << ram_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -379,17 +379,17 @@ void ram()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << cpu_name[10]; cartfile << endl; cartfileprice << cpu_pr[10]; cartfileprice << endl; cpu();
+    case '1': cartfile << ram_name[0]; cartfile << endl; cartfileprice << ram_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << ram_name[1]; cartfile << endl; cartfileprice << ram_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << ram_name[2]; cartfile << endl; cartfileprice << ram_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << ram_name[3]; cartfile << endl; cartfileprice << ram_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << ram_name[4]; cartfile << endl; cartfileprice << ram_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << ram_name[5]; cartfile << endl; cartfileprice << ram_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << ram_name[6]; cartfile << endl; cartfileprice << ram_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << ram_name[7]; cartfile << endl; cartfileprice << ram_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << ram_name[8]; cartfile << endl; cartfileprice << ram_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << ram_name[9]; cartfile << endl; cartfileprice << ram_pr[9]; cartfileprice << endl; cpu();
+    case '11':cartfile << ram_name[10]; cartfile << endl; cartfileprice << ram_pr[10]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
@@ -409,12 +409,12 @@ void psu()
     ifstream pfileprice;
     dfiledata.open("psudata.txt");
     pfileprice.open("psuprice.txt");
-    string cpu_name[psusize];
-    int cpu_pr[psusize];
+    string psu_name[psusize];
+    int psu_pr[psusize];
 
     for (int n1 = 0; n1 < psusize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, psu_name[n1]);
+        pfileprice >> psu_pr[n1];
     }
     //---------------------------------------------------
 
@@ -424,7 +424,7 @@ void psu()
 
     for (int n = 0; n < psusize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << psu_name[n] << "   {" << psu_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -444,16 +444,16 @@ void psu()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
+    case '1': cartfile << psu_name[0]; cartfile << endl; cartfileprice << psu_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << psu_name[1]; cartfile << endl; cartfileprice << psu_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << psu_name[2]; cartfile << endl; cartfileprice << psu_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << psu_name[3]; cartfile << endl; cartfileprice << psu_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << psu_name[4]; cartfile << endl; cartfileprice << psu_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << psu_name[5]; cartfile << endl; cartfileprice << psu_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << psu_name[6]; cartfile << endl; cartfileprice << psu_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << psu_name[7]; cartfile << endl; cartfileprice << psu_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << psu_name[8]; cartfile << endl; cartfileprice << psu_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << psu_name[9]; cartfile << endl; cartfileprice << psu_pr[9]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
@@ -473,12 +473,12 @@ void cases()
     ifstream pfileprice;
     dfiledata.open("casedata.txt");
     pfileprice.open("caseprice.txt");
-    string cpu_name[casesize];
-    int cpu_pr[casesize];
+    string cases_name[casesize];
+    int cases_pr[casesize];
 
     for (int n1 = 0; n1 < casesize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, cases_name[n1]);
+        pfileprice >> cases_pr[n1];
     }
     //---------------------------------------------------
 
@@ -488,7 +488,7 @@ void cases()
 
     for (int n = 0; n < casesize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << cases_name[n] << "   {" << cases_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -508,15 +508,15 @@ void cases()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
+    case '1': cartfile << cases_name[0]; cartfile << endl; cartfileprice << cases_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << cases_name[1]; cartfile << endl; cartfileprice << cases_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << cases_name[2]; cartfile << endl; cartfileprice << cases_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << cases_name[3]; cartfile << endl; cartfileprice << cases_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << cases_name[4]; cartfile << endl; cartfileprice << cases_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << cases_name[5]; cartfile << endl; cartfileprice << cases_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << cases_name[6]; cartfile << endl; cartfileprice << cases_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << cases_name[7]; cartfile << endl; cartfileprice << cases_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << cases_name[8]; cartfile << endl; cartfileprice << cases_pr[8]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
@@ -537,12 +537,12 @@ void mobo()
     ifstream pfileprice;
     dfiledata.open("motherboarddata.txt");
     pfileprice.open("motherboardprice.txt");
-    string cpu_name[mobosize];
-    int cpu_pr[mobosize];
+    string mobo_name[mobosize];
+    int mobo_pr[mobosize];
 
     for (int n1 = 0; n1 < mobosize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, mobo_name[n1]);
+        pfileprice >> mobo_pr[n1];
     }
     //---------------------------------------------------
 
@@ -552,7 +552,7 @@ void mobo()
 
     for (int n = 0; n < mobosize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << mobo_name[n] << "   {" << mobo_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -572,16 +572,16 @@ void mobo()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
+    case '1': cartfile << mobo_name[0]; cartfile << endl; cartfileprice << mobo_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << mobo_name[1]; cartfile << endl; cartfileprice << mobo_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << mobo_name[2]; cartfile << endl; cartfileprice << mobo_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << mobo_name[3]; cartfile << endl; cartfileprice << mobo_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << mobo_name[4]; cartfile << endl; cartfileprice << mobo_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << mobo_name[5]; cartfile << endl; cartfileprice << mobo_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << mobo_name[6]; cartfile << endl; cartfileprice << mobo_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << mobo_name[7]; cartfile << endl; cartfileprice << mobo_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << mobo_name[8]; cartfile << endl; cartfileprice << mobo_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << mobo_name[9]; cartfile << endl; cartfileprice << mobo_pr[9]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
@@ -601,12 +601,12 @@ void storun()
     ifstream pfileprice;
     dfiledata.open("storundata.txt");
     pfileprice.open("storunprice.txt");
-    string cpu_name[storunsize];
-    int cpu_pr[storunsize];
+    string storun_name[storunsize];
+    int storun_pr[storunsize];
 
     for (int n1 = 0; n1 < storunsize; n1++) {
-        getline(dfiledata, cpu_name[n1]);
-        pfileprice >> cpu_pr[n1];
+        getline(dfiledata, storun_name[n1]);
+        pfileprice >> storun_pr[n1];
     }
     //---------------------------------------------------
 
@@ -616,7 +616,7 @@ void storun()
 
     for (int n = 0; n < storunsize; n++)
     {
-        cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
+        cout << "                              [" << n + 1 << "]" << storun_name[n] << "   {" << storun_pr[n] << " EGP}" << endl;
     }
     cout << "                              Press any key to back to main menu.\n";
     //----------------------------------------------------
@@ -636,17 +636,17 @@ void storun()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << cpu_name[10]; cartfile << endl; cartfileprice << cpu_pr[10]; cartfileprice << endl; cpu();
+    case '1': cartfile << storun_name[0]; cartfile << endl; cartfileprice << storun_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << storun_name[1]; cartfile << endl; cartfileprice << storun_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << storun_name[2]; cartfile << endl; cartfileprice << storun_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << storun_name[3]; cartfile << endl; cartfileprice << storun_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << storun_name[4]; cartfile << endl; cartfileprice << storun_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << storun_name[5]; cartfile << endl; cartfileprice << storun_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << storun_name[6]; cartfile << endl; cartfileprice << storun_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << storun_name[7]; cartfile << endl; cartfileprice << storun_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << storun_name[8]; cartfile << endl; cartfileprice << storun_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << storun_name[9]; cartfile << endl; cartfileprice << storun_pr[9]; cartfileprice << endl; cpu();
+    case '11':cartfile << storun_name[10]; cartfile << endl; cartfileprice << storun_pr[10]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
