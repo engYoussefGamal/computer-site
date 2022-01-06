@@ -9,12 +9,12 @@ using namespace std;
 #define name_file_cart  "data_cart/"
 
 const int cpusize = 10;
-const int Gpusize = 10;
-const int ramsize = 10;
+const int Gpusize = 12;
+const int ramsize = 11;
 const int psusize = 10;
-const int casesize = 10;
+const int casesize = 9;
 const int mobosize = 10;
-const int storunsize = 10;
+const int storunsize = 11;
 
 string usr;
 
