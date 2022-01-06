@@ -1,7 +1,7 @@
-
 #include<iostream>
 #include<fstream>
 #include<string>
+#include<vector>
 
 using namespace std;
 
@@ -19,7 +19,7 @@ const int storunsize = 10;
 string usr;
 
 void cart();
-void view_cart();
+void total_money();
 void menu();
 void log_in();
 void sign_up();
@@ -53,7 +53,7 @@ int main()
     }
     system("cls");
     //-----------------------------------------------------
-
+   
     //menu-------------------------------------------------
     menu();
 
@@ -98,20 +98,47 @@ void cart()
     ifstream cartread;
     string urname = name_file_cart + usr + ".txt";
     cartread.open(urname, ios::in);
-    if (cartread.is_open());
+    if (cartread.is_open()) {
 
-    string read_line;
-    while (getline(cartread, read_line))
-    {
-        cout << "                             " << read_line;
-        cout << endl;
+        string read_line;
+        while (getline(cartread, read_line))
+        {
+            cout << "                             " << read_line;
+            cout << endl;
+        }
+        total_money();
+        cartread.close();
     }
-    cartread.close();
 }
 
-void view_cart()
+void total_money()
 {
+    ifstream viewcartm;
+    string viewcarttotal = name_file_cart + usr + "pr" + ".txt";
+    viewcartm.open(viewcarttotal);
 
+    //Code to know the number of lines in the file--------
+    int count = 0;
+    string line;
+    ifstream file(viewcarttotal);
+    while (getline(file, line))
+        count++;
+    //-----------------------------------------------------
+    vector<int> monet(count);
+    if (viewcartm.is_open()) {
+        for (int i = 0; i < count; i++) {
+            viewcartm >> monet[i];
+        }
+        int sum = 0;
+        int total;
+        for (int j = 0; j < count; j++) {
+            cout << "                             " << monet[j] << "EGP" << endl;
+            total = monet[j];
+            sum += total;
+        }
+        cout <<"                             Total items = " << count;
+        cout <<"                             Total money = " << sum <<"EGP";
+    }
 }
 
 void log_in()
@@ -138,8 +165,9 @@ void log_in()
             logfile.close();
         }
         else {
-            cout << "\n                                   Wrong username or password!\n";
-            cout << "                                        Please try Again.\n";
+            cout << "\n                                              Wrong username or password!\n";
+            cout << "                                                 Please try Again.\n";
+            log_in();
         }
         cout << endl;
     }
@@ -147,6 +175,7 @@ void log_in()
     {
         cout << "\n                                                 Username not found.\n";
         cout << "                                                   please sign up.\n";
+        sign_up();
     }
 }
 
@@ -212,16 +241,16 @@ void cpu()
     cin >> ch;
     switch (ch)
     {
-    case '1': cartfile << cpu_name[0]; cartfileprice << cpu_pr[0]; cartfile << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfileprice << cpu_pr[1]; cartfile << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfileprice << cpu_pr[2]; cartfile << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfileprice << cpu_pr[3]; cartfile << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfileprice << cpu_pr[4]; cartfile << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfileprice << cpu_pr[5]; cartfile << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfileprice << cpu_pr[6]; cartfile << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfileprice << cpu_pr[7]; cartfile << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfileprice << cpu_pr[8]; cartfile << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfileprice << cpu_pr[9]; cartfile << endl; cpu();
+    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
+    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
+    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
+    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
+    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
+    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
+    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
+    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
+    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
+    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
     default: menu();
     }
     //----------------------------------------------------
