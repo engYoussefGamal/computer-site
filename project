@@ -38,7 +38,7 @@ void psu();
 void cases();
 void mobo();
 void storun();
-void check_out();
+void delete_cart();
 int exit();
 //--------------------------------------------
 
@@ -76,30 +76,32 @@ int main()
 
 void menu()
 {
+    system("cls");
     string num;
     cout << "\n                             ---------------------------main menu-------------------------------                   \n";
     cout << "                             email:" << nam << "                                        balance:" << balance <<endl << endl;
-    // cout << "                                                                                     main menu: \n";
     cout << "                                                        [0]cart\n";
-    cout << "                                                        [1]Processor\n";
-    cout << "                                                        [2]Graphics cards\n";
-    cout << "                                                        [3]Memory\n";
-    cout << "                                                        [4]Power supplies\n";
-    cout << "                                                        [5]Cases\n";
-    cout << "                                                        [6]Motherboards\n";
-    cout << "                                                        [7]Storage units\n";
+    cout << "                                                        [1]delete cart\n";
+    cout << "                                                        [2]Processor\n";
+    cout << "                                                        [3]Graphics cards\n";
+    cout << "                                                        [4]Memory\n";
+    cout << "                                                        [5]Power supplies\n";
+    cout << "                                                        [6]Cases\n";
+    cout << "                                                        [7]Motherboards\n";
+    cout << "                                                        [8]Storage units\n";
     cout << "                                                        Press any key to exit.\n\n";
     cout << "                                                        Choose from the menu: ";
     cin >> num;
 
-    if (num == "0") { cart(); menu(); }
-    else if (num == "1") { cpu(); }
-    else if (num == "2") { Gpu(); }
-    else if (num == "3") { ram(); }
-    else if (num == "4") { psu(); }
-    else if (num == "5") { cases(); }
-    else if (num == "6") { mobo(); }
-    else if (num == "7") { storun(); }
+    if (num == "0") { cart();}
+    else if (num == "1") { delete_cart(); }
+    else if (num == "2") { cpu(); }
+    else if (num == "3") { Gpu(); }
+    else if (num == "4") { ram(); }
+    else if (num == "5") { psu(); }
+    else if (num == "6") { cases(); }
+    else if (num == "7") { mobo(); }
+    else if (num == "8") { storun(); }
     else { exit(); }
 }
 
@@ -151,15 +153,12 @@ void total_money()
         cout << "                             Total items = " << count;
         cout << "                             Total money = " << sum << "EGP";
         cout << "                                                      --------------------------------------------------------------------\n";
-        int num;
-        cout << "                             [1]check out\n";
-        cout << "                             [2]back to menu";
+        char num;
+        cout << "                             Press ant key to back to main menu.\n";
         cin >> num;
         switch (num)
         {
-        case 1: check_out();
-        case 2: menu();
-        default:cout << "                         You didn't choose 1 or 2....\n"; total_money();
+        default: menu();
         }
     }
 }
@@ -589,9 +588,9 @@ void storun()
     //----------------------------------------------------
 }
 
-void check_out()
+void delete_cart()
 {
-
+    
 }
 
 int exit()
