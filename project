@@ -11,13 +11,13 @@ using namespace std;
 //--------------------------------------------
 
 //The number of names from each category
-const int cpusize = 10;
-const int Gpusize = 12;
-const int ramsize = 11;
-const int psusize = 10;
+const int cpusize = 9;
+const int Gpusize = 8;
+const int ramsize = 8;
+const int psusize = 8;
 const int casesize = 9;
-const int mobosize = 10;
-const int storunsize = 11;
+const int mobosize = 7;
+const int storunsize = 7;
 //--------------------------------------------
 
 string usr;
@@ -79,7 +79,7 @@ void menu()
     system("cls");
     string num;
     cout << "\n                             ---------------------------main menu-------------------------------                   \n";
-    cout << "                             email:" << nam << "                                        balance:" << balance <<endl << endl;
+    cout << "                             email:" << nam << "                                         balance:" << balance << endl << endl;
     cout << "                                                        [0]cart\n";
     cout << "                                                        [1]delete cart\n";
     cout << "                                                        [2]Processor\n";
@@ -93,7 +93,7 @@ void menu()
     cout << "                                                        Choose from the menu: ";
     cin >> num;
 
-    if (num == "0") { cart();}
+    if (num == "0") { cart(); }
     else if (num == "1") { delete_cart(); }
     else if (num == "2") { cpu(); }
     else if (num == "3") { Gpu(); }
@@ -107,8 +107,9 @@ void menu()
 
 void cart()
 {
+    system("cls");
     cout << "\n                             ------------------------------cart---------------------------------                   \n";
-    cout << "                             email:" << nam << "                                        balance:" << balance << endl << endl;
+    cout << "                             email:" << nam << "                                         balance:" << balance << endl << endl;
     ifstream cartread;
     string urname = name_file_cart + usr + ".txt";
     cartread.open(urname, ios::in);
@@ -158,6 +159,7 @@ void total_money()
         cin >> num;
         switch (num)
         {
+        case '0':menu();
         default: menu();
         }
     }
@@ -220,6 +222,7 @@ void sign_up()
     ofile << username << endl << mail << endl << adr << endl << password << endl << balance;
     ofile.close();
     cout << "\n                                             You are successfully registered:)\n";
+    system("cls");
     log_in();
 }
 
@@ -247,7 +250,7 @@ void cpu()
     {
         cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -260,10 +263,11 @@ void cpu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= cpusize) { cartfile << cpu_name[ch - 1]; cartfile << endl; cartfileprice << cpu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9')
+    {cartfile << cpu_name[ch - '1']; cartfile << endl; cartfileprice << cpu_pr[ch - '1']; cartfileprice << endl; cpu();}
     else { menu(); }
     //----------------------------------------------------
 
@@ -299,7 +303,7 @@ void Gpu()
     {
         cout << "                              [" << n + 1 << "]" << gpu_name[n] << "   {" << gpu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -312,10 +316,11 @@ void Gpu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= Gpusize) { cartfile << gpu_name[ch - 1]; cartfile << endl; cartfileprice << gpu_pr[ch - 1]; cartfileprice << endl; Gpu();}
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8')
+    {cartfile << gpu_name[ch - '1']; cartfile << endl; cartfileprice << gpu_pr[ch - '1']; cartfileprice << endl; Gpu();}
     else { menu(); }
     //----------------------------------------------------
 
@@ -351,7 +356,7 @@ void ram()
     {
         cout << "                              [" << n + 1 << "]" << ram_name[n] << "   {" << ram_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -364,10 +369,11 @@ void ram()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= ramsize) { cartfile << ram_name[ch - 1]; cartfile << endl; cartfileprice << ram_pr[ch - 1]; cartfileprice << endl; ram(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8')
+    { cartfile << ram_name[ch - '1']; cartfile << endl; cartfileprice << ram_pr[ch - '1']; cartfileprice << endl; ram(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -403,7 +409,7 @@ void psu()
     {
         cout << "                              [" << n + 1 << "]" << psu_name[n] << "   {" << psu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -416,10 +422,11 @@ void psu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= psusize) { cartfile << psu_name[ch - 1]; cartfile << endl; cartfileprice << psu_pr[ch - 1]; cartfileprice << endl; psu(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8')
+    { cartfile << psu_name[ch - '1']; cartfile << endl; cartfileprice << psu_pr[ch - '1']; cartfileprice << endl; psu(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -455,7 +462,7 @@ void cases()
     {
         cout << "                              [" << n + 1 << "]" << cases_name[n] << "   {" << cases_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -468,10 +475,11 @@ void cases()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= casesize) { cartfile << cases_name[ch - 1]; cartfile << endl; cartfileprice << cases_pr[ch - 1]; cartfileprice << endl; cases(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9')
+    { cartfile << cases_name[ch - '1']; cartfile << endl; cartfileprice << cases_pr[ch - '1']; cartfileprice << endl; cases(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -508,7 +516,7 @@ void mobo()
     {
         cout << "                              [" << n + 1 << "]" << mobo_name[n] << "   {" << mobo_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -521,10 +529,11 @@ void mobo()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= mobosize) { cartfile << mobo_name[ch - 1]; cartfile << endl; cartfileprice << mobo_pr[ch - 1]; cartfileprice << endl; mobo(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7')
+    { cartfile << mobo_name[ch - '1']; cartfile << endl; cartfileprice << mobo_pr[ch - '1']; cartfileprice << endl; mobo(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -560,7 +569,7 @@ void storun()
     {
         cout << "                              [" << n + 1 << "]" << storun_name[n] << "   {" << storun_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press 0 to back to main menu.\n";
+    cout << "                              Press ant key to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -573,10 +582,11 @@ void storun()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    int ch;
+    char ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= storunsize) { cartfile << storun_name[ch - 1]; cartfile << endl; cartfileprice << storun_pr[ch - 1]; cartfileprice << endl; storun(); }
+    if (ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7')
+    { cartfile << storun_name[ch - '1']; cartfile << endl; cartfileprice << storun_pr[ch - '1']; cartfileprice << endl; storun(); }
     else { menu(); }
     //----------------------------------------------------
 
