@@ -21,6 +21,9 @@ const int storunsize = 11;
 //--------------------------------------------
 
 string usr;
+string adrr;
+string nam;
+int balance = 0;
 
 //functions
 void cart();
@@ -35,6 +38,8 @@ void psu();
 void cases();
 void mobo();
 void storun();
+void check_out();
+int exit();
 //--------------------------------------------
 
 int main()
@@ -46,7 +51,7 @@ int main()
     //  cout << "                                                      Choose one option: ";
     cout << "\n                                                     press 1 to SignUp";
     cout << "\n                                                     press 2 to LogIn\n";
-   // cout << "\n                                                     Press any key to exit.\n";
+    // cout << "\n                                                     Press any key to exit.\n";
     cin >> n;
     if (n == '1')
         sign_up();
@@ -71,9 +76,10 @@ int main()
 
 void menu()
 {
-    char num;
-    cout << "\n                             ---------------------------main menu-------------------------------                   \n\n";
-    cout << "                                                        main menu: \n";
+    string num;
+    cout << "\n                             ---------------------------main menu-------------------------------                   \n";
+    cout << "                             email:" << nam << "                                        balance:" << balance <<endl << endl;
+    // cout << "                                                                                     main menu: \n";
     cout << "                                                        [0]cart\n";
     cout << "                                                        [1]Processor\n";
     cout << "                                                        [2]Graphics cards\n";
@@ -86,23 +92,21 @@ void menu()
     cout << "                                                        Choose from the menu: ";
     cin >> num;
 
-    switch (num)
-    {
-    case '0': cart(); menu();
-    case '1': cpu();
-    case '2': Gpu();
-    case '3': ram();
-    case '4': psu();
-    case '5': cases();
-    case '6': mobo();
-    case '7': storun();
-    default: break;
-    }
+    if (num == "0") { cart(); menu(); }
+    else if (num == "1") { cpu(); }
+    else if (num == "2") { Gpu(); }
+    else if (num == "3") { ram(); }
+    else if (num == "4") { psu(); }
+    else if (num == "5") { cases(); }
+    else if (num == "6") { mobo(); }
+    else if (num == "7") { storun(); }
+    else { exit(); }
 }
 
 void cart()
 {
-    cout << "\n                             ------------------------------cart---------------------------------                   \n\n";
+    cout << "\n                             ------------------------------cart---------------------------------                   \n";
+    cout << "                             email:" << nam << "                                        balance:" << balance << endl << endl;
     ifstream cartread;
     string urname = name_file_cart + usr + ".txt";
     cartread.open(urname, ios::in);
@@ -140,19 +144,30 @@ void total_money()
         int sum = 0;
         int total;
         for (int j = 0; j < count; j++) {
-            cout << "                             "<< monet[j] << "EGP" << endl;
+            cout << "                             " << monet[j] << "EGP" << endl;
             total = monet[j];
             sum += total;
         }
         cout << "                             Total items = " << count;
         cout << "                             Total money = " << sum << "EGP";
+        cout << "                                                      --------------------------------------------------------------------\n";
+        int num;
+        cout << "                             [1]check out\n";
+        cout << "                             [2]back to menu";
+        cin >> num;
+        switch (num)
+        {
+        case 1: check_out();
+        case 2: menu();
+        default:cout << "                         You didn't choose 1 or 2....\n"; total_money();
+        }
     }
 }
 
 void log_in()
 {
     cout << "\n                             ---------------------------login--------------------------------                  \n\n";
-    string nam, ps, userr, pss;
+    string ps, userr, pss;
     cout << "                                                Enter your username: ";
     cin >> userr;
     cout << "                                                Enter your password: ";
@@ -165,11 +180,11 @@ void log_in()
     {
         logfile >> usr;
         logfile >> nam;
+        logfile >> adrr;
         logfile >> ps;
+        logfile >> balance;
         if (userr == usr && pss == ps) {
             cout << "\n                                              You are successfully logged in:)\n";
-            //  cout << "User-name:" << usr << endl;
-            //  cout << "mail:" << nam << endl;
             logfile.close();
         }
         else {
@@ -190,18 +205,20 @@ void log_in()
 void sign_up()
 {
     cout << "\n                             ---------------------------signup-------------------------------                   \n\n";
-    string mail, username, password;
+    string mail, username, password, adr;
     cout << "                                                 Enter your username: ";
     cin >> username;
     cout << "                                                 Enter your mail: ";
     cin >> mail;
+    cout << "                                                 Enter your adress: ";
+    cin >> adr;
     cout << "                                                 Enter your password: ";
     cin >> password;
 
     ofstream ofile;
     string dir = name_file + username + ".txt";
     ofile.open(dir);
-    ofile << username << endl << mail << endl << password;
+    ofile << username << endl << mail << endl << adr << endl << password << endl << balance;
     ofile.close();
     cout << "\n                                             You are successfully registered:)\n";
     log_in();
@@ -231,7 +248,7 @@ void cpu()
     {
         cout << "                              [" << n + 1 << "]" << cpu_name[n] << "   {" << cpu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -244,23 +261,11 @@ void cpu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << cpu_name[0]; cartfile << endl; cartfileprice << cpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cpu_name[1]; cartfile << endl; cartfileprice << cpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cpu_name[2]; cartfile << endl; cartfileprice << cpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cpu_name[3]; cartfile << endl; cartfileprice << cpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cpu_name[4]; cartfile << endl; cartfileprice << cpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cpu_name[5]; cartfile << endl; cartfileprice << cpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cpu_name[6]; cartfile << endl; cartfileprice << cpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cpu_name[7]; cartfile << endl; cartfileprice << cpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cpu_name[8]; cartfile << endl; cartfileprice << cpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << cpu_name[9]; cartfile << endl; cartfileprice << cpu_pr[9]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= cpusize) { cartfile << cpu_name[ch - 1]; cartfile << endl; cartfileprice << cpu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -295,7 +300,7 @@ void Gpu()
     {
         cout << "                              [" << n + 1 << "]" << gpu_name[n] << "   {" << gpu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -308,25 +313,11 @@ void Gpu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << gpu_name[0]; cartfile << endl; cartfileprice << gpu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << gpu_name[1]; cartfile << endl; cartfileprice << gpu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << gpu_name[2]; cartfile << endl; cartfileprice << gpu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << gpu_name[3]; cartfile << endl; cartfileprice << gpu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << gpu_name[4]; cartfile << endl; cartfileprice << gpu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << gpu_name[5]; cartfile << endl; cartfileprice << gpu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << gpu_name[6]; cartfile << endl; cartfileprice << gpu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << gpu_name[7]; cartfile << endl; cartfileprice << gpu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << gpu_name[8]; cartfile << endl; cartfileprice << gpu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << gpu_name[9]; cartfile << endl; cartfileprice << gpu_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << gpu_name[10]; cartfile << endl; cartfileprice << gpu_pr[10]; cartfileprice << endl; cpu();
-    case '12':cartfile << gpu_name[11]; cartfile << endl; cartfileprice << gpu_pr[11]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= Gpusize) { cartfile << gpu_name[ch - 1]; cartfile << endl; cartfileprice << gpu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -361,7 +352,7 @@ void ram()
     {
         cout << "                              [" << n + 1 << "]" << ram_name[n] << "   {" << ram_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -374,24 +365,11 @@ void ram()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << ram_name[0]; cartfile << endl; cartfileprice << ram_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << ram_name[1]; cartfile << endl; cartfileprice << ram_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << ram_name[2]; cartfile << endl; cartfileprice << ram_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << ram_name[3]; cartfile << endl; cartfileprice << ram_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << ram_name[4]; cartfile << endl; cartfileprice << ram_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << ram_name[5]; cartfile << endl; cartfileprice << ram_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << ram_name[6]; cartfile << endl; cartfileprice << ram_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << ram_name[7]; cartfile << endl; cartfileprice << ram_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << ram_name[8]; cartfile << endl; cartfileprice << ram_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << ram_name[9]; cartfile << endl; cartfileprice << ram_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << ram_name[10]; cartfile << endl; cartfileprice << ram_pr[10]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= ramsize) { cartfile << ram_name[ch - 1]; cartfile << endl; cartfileprice << ram_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -426,7 +404,7 @@ void psu()
     {
         cout << "                              [" << n + 1 << "]" << psu_name[n] << "   {" << psu_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -439,23 +417,11 @@ void psu()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << psu_name[0]; cartfile << endl; cartfileprice << psu_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << psu_name[1]; cartfile << endl; cartfileprice << psu_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << psu_name[2]; cartfile << endl; cartfileprice << psu_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << psu_name[3]; cartfile << endl; cartfileprice << psu_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << psu_name[4]; cartfile << endl; cartfileprice << psu_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << psu_name[5]; cartfile << endl; cartfileprice << psu_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << psu_name[6]; cartfile << endl; cartfileprice << psu_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << psu_name[7]; cartfile << endl; cartfileprice << psu_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << psu_name[8]; cartfile << endl; cartfileprice << psu_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << psu_name[9]; cartfile << endl; cartfileprice << psu_pr[9]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= psusize) { cartfile << psu_name[ch - 1]; cartfile << endl; cartfileprice << psu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -490,7 +456,7 @@ void cases()
     {
         cout << "                              [" << n + 1 << "]" << cases_name[n] << "   {" << cases_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -503,22 +469,11 @@ void cases()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << cases_name[0]; cartfile << endl; cartfileprice << cases_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << cases_name[1]; cartfile << endl; cartfileprice << cases_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << cases_name[2]; cartfile << endl; cartfileprice << cases_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << cases_name[3]; cartfile << endl; cartfileprice << cases_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << cases_name[4]; cartfile << endl; cartfileprice << cases_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << cases_name[5]; cartfile << endl; cartfileprice << cases_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << cases_name[6]; cartfile << endl; cartfileprice << cases_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << cases_name[7]; cartfile << endl; cartfileprice << cases_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << cases_name[8]; cartfile << endl; cartfileprice << cases_pr[8]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= casesize) { cartfile << cases_name[ch - 1]; cartfile << endl; cartfileprice << cases_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -554,7 +509,7 @@ void mobo()
     {
         cout << "                              [" << n + 1 << "]" << mobo_name[n] << "   {" << mobo_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -567,23 +522,11 @@ void mobo()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << mobo_name[0]; cartfile << endl; cartfileprice << mobo_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << mobo_name[1]; cartfile << endl; cartfileprice << mobo_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << mobo_name[2]; cartfile << endl; cartfileprice << mobo_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << mobo_name[3]; cartfile << endl; cartfileprice << mobo_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << mobo_name[4]; cartfile << endl; cartfileprice << mobo_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << mobo_name[5]; cartfile << endl; cartfileprice << mobo_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << mobo_name[6]; cartfile << endl; cartfileprice << mobo_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << mobo_name[7]; cartfile << endl; cartfileprice << mobo_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << mobo_name[8]; cartfile << endl; cartfileprice << mobo_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << mobo_name[9]; cartfile << endl; cartfileprice << mobo_pr[9]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= mobosize) { cartfile << mobo_name[ch - 1]; cartfile << endl; cartfileprice << mobo_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -618,7 +561,7 @@ void storun()
     {
         cout << "                              [" << n + 1 << "]" << storun_name[n] << "   {" << storun_pr[n] << " EGP}" << endl;
     }
-    cout << "                              Press any key to back to main menu.\n";
+    cout << "                              Press 0 to back to main menu.\n";
     //----------------------------------------------------
 
     //save chooses price in file--------------------------
@@ -631,24 +574,11 @@ void storun()
     ofstream cartfile;
     string dircart = name_file_cart + usr + ".txt";
     cartfile.open(dircart, ios::out | ios::app);
-    char ch;
+    int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    switch (ch)
-    {
-    case '1': cartfile << storun_name[0]; cartfile << endl; cartfileprice << storun_pr[0]; cartfileprice << endl; cpu();
-    case '2': cartfile << storun_name[1]; cartfile << endl; cartfileprice << storun_pr[1]; cartfileprice << endl; cpu();
-    case '3': cartfile << storun_name[2]; cartfile << endl; cartfileprice << storun_pr[2]; cartfileprice << endl; cpu();
-    case '4': cartfile << storun_name[3]; cartfile << endl; cartfileprice << storun_pr[3]; cartfileprice << endl; cpu();
-    case '5': cartfile << storun_name[4]; cartfile << endl; cartfileprice << storun_pr[4]; cartfileprice << endl; cpu();
-    case '6': cartfile << storun_name[5]; cartfile << endl; cartfileprice << storun_pr[5]; cartfileprice << endl; cpu();
-    case '7': cartfile << storun_name[6]; cartfile << endl; cartfileprice << storun_pr[6]; cartfileprice << endl; cpu();
-    case '8': cartfile << storun_name[7]; cartfile << endl; cartfileprice << storun_pr[7]; cartfileprice << endl; cpu();
-    case '9': cartfile << storun_name[8]; cartfile << endl; cartfileprice << storun_pr[8]; cartfileprice << endl; cpu();
-    case '10':cartfile << storun_name[9]; cartfile << endl; cartfileprice << storun_pr[9]; cartfileprice << endl; cpu();
-    case '11':cartfile << storun_name[10]; cartfile << endl; cartfileprice << storun_pr[10]; cartfileprice << endl; cpu();
-    default: menu();
-    }
+    if (ch >= 1 && ch <= storunsize) { cartfile << storun_name[ch - 1]; cartfile << endl; cartfileprice << storun_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    else { menu(); }
     //----------------------------------------------------
 
     //close files-----------------------------------------
@@ -657,4 +587,14 @@ void storun()
     pfileprice.close();
     cartfileprice.close();
     //----------------------------------------------------
+}
+
+void check_out()
+{
+
+}
+
+int exit()
+{
+    return 0;
 }
