@@ -138,7 +138,7 @@ void total_money()
     while (getline(file, line))
         count++;
     //-----------------------------------------------------
-    vector<int> monet(count);
+    vector<int> monet(count); // int monet[count] 
     if (viewcartm.is_open()) {
         for (int i = 0; i < count; i++) {
             viewcartm >> monet[i];
@@ -315,7 +315,7 @@ void Gpu()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= Gpusize) { cartfile << gpu_name[ch - 1]; cartfile << endl; cartfileprice << gpu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= Gpusize) { cartfile << gpu_name[ch - 1]; cartfile << endl; cartfileprice << gpu_pr[ch - 1]; cartfileprice << endl; Gpu();}
     else { menu(); }
     //----------------------------------------------------
 
@@ -367,7 +367,7 @@ void ram()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= ramsize) { cartfile << ram_name[ch - 1]; cartfile << endl; cartfileprice << ram_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= ramsize) { cartfile << ram_name[ch - 1]; cartfile << endl; cartfileprice << ram_pr[ch - 1]; cartfileprice << endl; ram(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -419,7 +419,7 @@ void psu()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= psusize) { cartfile << psu_name[ch - 1]; cartfile << endl; cartfileprice << psu_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= psusize) { cartfile << psu_name[ch - 1]; cartfile << endl; cartfileprice << psu_pr[ch - 1]; cartfileprice << endl; psu(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -471,7 +471,7 @@ void cases()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= casesize) { cartfile << cases_name[ch - 1]; cartfile << endl; cartfileprice << cases_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= casesize) { cartfile << cases_name[ch - 1]; cartfile << endl; cartfileprice << cases_pr[ch - 1]; cartfileprice << endl; cases(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -524,7 +524,7 @@ void mobo()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= mobosize) { cartfile << mobo_name[ch - 1]; cartfile << endl; cartfileprice << mobo_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= mobosize) { cartfile << mobo_name[ch - 1]; cartfile << endl; cartfileprice << mobo_pr[ch - 1]; cartfileprice << endl; mobo(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -576,7 +576,7 @@ void storun()
     int ch;
     cout << "                              choose number: ";
     cin >> ch;
-    if (ch >= 1 && ch <= storunsize) { cartfile << storun_name[ch - 1]; cartfile << endl; cartfileprice << storun_pr[ch - 1]; cartfileprice << endl; cpu(); }
+    if (ch >= 1 && ch <= storunsize) { cartfile << storun_name[ch - 1]; cartfile << endl; cartfileprice << storun_pr[ch - 1]; cartfileprice << endl; storun(); }
     else { menu(); }
     //----------------------------------------------------
 
@@ -590,7 +590,15 @@ void storun()
 
 void delete_cart()
 {
-    
+    ofstream cart;
+    ofstream cartprice;
+    string urname = name_file_cart + usr + ".txt";
+    string urname2 = name_file_cart + usr + "pr" + ".txt";
+    cart.open(urname, ofstream::out | ofstream::trunc);
+    cartprice.open(urname2, ofstream::out | ofstream::trunc);
+    cartprice.close();
+    cart.close();
+    menu();
 }
 
 int exit()
